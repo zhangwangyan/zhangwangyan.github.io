@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>言治骨角者，既切之而复磋之；治玉石者，既琢之而复磨之，治之已精，而益求其精也。</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.@Autowired  @Resource的依赖注入  init-method和@PostConstruct@PreDestory 各种Aware接口的调用   https:&#x2F;&#x2F;blog.csdn.net&#x2F;zyw0101&#x2F;article&#x2F;details&#x2F;84649397   根据某一些条件，依赖注入。  引用数据类型的依赖注入会触发getBeab操作 收集的类不同，处理类不同、@Autowri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="言治骨角者，既切之而复磋之；治玉石者，既琢之而复磨之，治之已精，而益求其精也。">
+<meta property="og:url" content="https://zhangwangyan.github.io/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/index.html">
+<meta property="og:site_name" content="言治骨角者，既切之而复磋之；治玉石者，既琢之而复磨之，治之已精，而益求其精也。">
+<meta property="og:description" content="1.@Autowired  @Resource的依赖注入  init-method和@PostConstruct@PreDestory 各种Aware接口的调用   https:&#x2F;&#x2F;blog.csdn.net&#x2F;zyw0101&#x2F;article&#x2F;details&#x2F;84649397   根据某一些条件，依赖注入。  引用数据类型的依赖注入会触发getBeab操作 收集的类不同，处理类不同、@Autowri">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhangwangyan.github.io/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109100910605.png">
+<meta property="og:image" content="https://zhangwangyan.github.io/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109103606905.png">
+<meta property="og:image" content="https://zhangwangyan.github.io/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109103736945.png">
+<meta property="og:image" content="https://zhangwangyan.github.io/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109103835185.png">
+<meta property="og:image" content="https://zhangwangyan.github.io/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109112550541.png">
+<meta property="og:image" content="c:/Users/123/AppData/Roaming/Typora/typora-user-images/image-20230109100910605.png">
+<meta property="og:image" content="https://zhangwangyan.github.io/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109103606905-16732364392137.png">
+<meta property="og:image" content="c:/Users/123/AppData/Roaming/Typora/typora-user-images/image-20230109103736945.png">
+<meta property="og:image" content="c:/Users/123/AppData/Roaming/Typora/typora-user-images/image-20230109103835185.png">
+<meta property="og:image" content="c:/Users/123/AppData/Roaming/Typora/typora-user-images/image-20230109112550541.png">
+<meta property="og:image" content="https://zhangwangyan.github.io/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109115500685.png">
+<meta property="og:image" content="https://zhangwangyan.github.io/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109120617691.png">
+<meta property="og:image" content="https://zhangwangyan.github.io/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109121956731.png">
+<meta property="og:image" content="https://zhangwangyan.github.io/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109122057221.png">
+<meta property="og:image" content="https://zhangwangyan.github.io/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109122145015.png">
+<meta property="article:published_time" content="2023-01-09T04:23:42.865Z">
+<meta property="article:modified_time" content="2023-01-09T04:21:46.358Z">
+<meta property="article:author" content="张王岩">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhangwangyan.github.io/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109100910605.png">
+  
+    <link rel="alternate" href="/atom.xml" title="言治骨角者，既切之而复磋之；治玉石者，既琢之而复磨之，治之已精，而益求其精也。" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">言治骨角者，既切之而复磋之；治玉石者，既琢之而复磨之，治之已精，而益求其精也。</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://zhangwangyan.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2023-1-9-@Autowired和@PostConstruct@PreDestory注解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/" class="article-date">
+  <time datetime="2023-01-09T04:23:42.865Z" itemprop="datePublished">2023-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.@Autowired  @Resource的依赖注入</p>
+<ol start="2">
+<li>init-method和@PostConstruct@PreDestory</li>
+<li>各种Aware接口的调用</li>
+</ol>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109100910605.png" alt="image-20230109100910605"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zyw0101/article/details/84649397">https://blog.csdn.net/zyw0101/article/details/84649397</a></p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109103606905.png" alt="image-20230109103606905"></p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109103736945.png" alt="image-20230109103736945"></p>
+<p>根据某一些条件，依赖注入。</p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109103835185.png" alt="image-20230109103835185"></p>
+<p>引用数据类型的依赖注入会触发getBeab操作</p>
+<p>收集的类不同，处理类不同、@Autowried   @Resource注解</p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109112550541.png" alt="image-20230109112550541"></p>
+<p>1.@Autowired  @Resource的依赖注入</p>
+<ol start="2">
+<li>init-method和@PostConstruct@PreDestory</li>
+<li>各种Aware接口的调用</li>
+<li>循环依赖详解</li>
+</ol>
+<p><img src="C:\Users\123\AppData\Roaming\Typora\typora-user-images\image-20230109100910605.png" alt="image-20230109100910605"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zyw0101/article/details/84649397">https://blog.csdn.net/zyw0101/article/details/84649397</a></p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109103606905-16732364392137.png" alt="image-20230109103606905"></p>
+<p><img src="C:\Users\123\AppData\Roaming\Typora\typora-user-images\image-20230109103736945.png" alt="image-20230109103736945"></p>
+<p>根据某一些条件，依赖注入。</p>
+<p><img src="C:\Users\123\AppData\Roaming\Typora\typora-user-images\image-20230109103835185.png" alt="image-20230109103835185"></p>
+<p>引用数据类型的依赖注入会触发getBeab操作</p>
+<p>收集的类不同，处理类不同、@Autowried   @Resource注解</p>
+<p><img src="C:\Users\123\AppData\Roaming\Typora\typora-user-images\image-20230109112550541.png" alt="image-20230109112550541"></p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109115500685.png" alt="image-20230109115500685"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//对类中某些特殊方法的调用，比如@PostConstruct，Aware接口，非常重要 重要程度 ：5</span><br><span class="line">			//ApplicationContextAwareProcessor 对Aware接口的调用如：</span><br><span class="line">			//EnvironmentAware EmbeddedValueResolverAware  ResourceLoaderAware ApplicationEventPublisherAware MessageSourceAware  ApplicationContextAware</span><br><span class="line">			</span><br><span class="line">			//ImportAwareBeanPostProcessor 对ImportAware的支持</span><br></pre></td></tr></table></figure>
+
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109120617691.png" alt="image-20230109120617691"></p>
+<p>想在这个过程发生作用，对bean进行装饰后，返回。</p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109121956731.png" alt="image-20230109121956731"></p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109122057221.png" alt="image-20230109122057221"></p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109122145015.png" alt="image-20230109122145015"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhangwangyan.github.io/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/" data-id="clcoaubpy0000q4u6enr14cof" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/01/08/2023-1-8-bean%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%94%B6%E9%9B%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2023-1-8-bean的实例化和注解的收集</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/spring/">spring</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">一月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/08/2023-1-8-bean%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%94%B6%E9%9B%86/">2023-1-8-bean的实例化和注解的收集</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/07/2023-1-7-BeanPostProcessor%E5%92%8CBean%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%88%9D%E6%8E%A2/">2023-1-7-BeanPostProcessor和Bean实例化初探</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/07/2023-1-7-%E4%BA%8B%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B1%BB+%E6%B3%A8%E5%86%8C%E4%BA%8B%E4%BB%B6%E7%B1%BB/">2023-1-7-事件管理类+注册事件类</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/07/2023-1-7-%20BeanDefinitionRegistryPostProcessor%20%20%20BeanFactoryPostProcessor%E8%B0%83%E7%94%A8/">2023-1-7-BeanDefinitionRegistryPostProcessor+BeanFactoryPostProcessor调用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 张王岩<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

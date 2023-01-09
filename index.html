@@ -64,6 +64,69 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2023-1-9-@Autowired和@PostConstruct@PreDestory注解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/" class="article-date">
+  <time datetime="2023-01-09T04:23:42.865Z" itemprop="datePublished">2023-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.@Autowired  @Resource的依赖注入</p>
+<ol start="2">
+<li>init-method和@PostConstruct@PreDestory</li>
+<li>各种Aware接口的调用</li>
+</ol>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109100910605.png" alt="image-20230109100910605"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zyw0101/article/details/84649397">https://blog.csdn.net/zyw0101/article/details/84649397</a></p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109103606905.png" alt="image-20230109103606905"></p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109103736945.png" alt="image-20230109103736945"></p>
+<p>根据某一些条件，依赖注入。</p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109103835185.png" alt="image-20230109103835185"></p>
+<p>引用数据类型的依赖注入会触发getBeab操作</p>
+<p>收集的类不同，处理类不同、@Autowried   @Resource注解</p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109112550541.png" alt="image-20230109112550541"></p>
+<p>1.@Autowired  @Resource的依赖注入</p>
+<ol start="2">
+<li>init-method和@PostConstruct@PreDestory</li>
+<li>各种Aware接口的调用</li>
+<li>循环依赖详解</li>
+</ol>
+<p><img src="C:\Users\123\AppData\Roaming\Typora\typora-user-images\image-20230109100910605.png" alt="image-20230109100910605"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zyw0101/article/details/84649397">https://blog.csdn.net/zyw0101/article/details/84649397</a></p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109103606905-16732364392137.png" alt="image-20230109103606905"></p>
+<p><img src="C:\Users\123\AppData\Roaming\Typora\typora-user-images\image-20230109103736945.png" alt="image-20230109103736945"></p>
+<p>根据某一些条件，依赖注入。</p>
+<p><img src="C:\Users\123\AppData\Roaming\Typora\typora-user-images\image-20230109103835185.png" alt="image-20230109103835185"></p>
+<p>引用数据类型的依赖注入会触发getBeab操作</p>
+<p>收集的类不同，处理类不同、@Autowried   @Resource注解</p>
+<p><img src="C:\Users\123\AppData\Roaming\Typora\typora-user-images\image-20230109112550541.png" alt="image-20230109112550541"></p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109115500685.png" alt="image-20230109115500685"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//对类中某些特殊方法的调用，比如@PostConstruct，Aware接口，非常重要 重要程度 ：5</span><br><span class="line">			//ApplicationContextAwareProcessor 对Aware接口的调用如：</span><br><span class="line">			//EnvironmentAware EmbeddedValueResolverAware  ResourceLoaderAware ApplicationEventPublisherAware MessageSourceAware  ApplicationContextAware</span><br><span class="line">			</span><br><span class="line">			//ImportAwareBeanPostProcessor 对ImportAware的支持</span><br></pre></td></tr></table></figure>
+
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109120617691.png" alt="image-20230109120617691"></p>
+<p>想在这个过程发生作用，对bean进行装饰后，返回。</p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109121956731.png" alt="image-20230109121956731"></p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109122057221.png" alt="image-20230109122057221"></p>
+<p><img src="2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3.assets/image-20230109122145015.png" alt="image-20230109122145015"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhangwangyan.github.io/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/" data-id="clcoaubpy0000q4u6enr14cof" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2023-1-8-bean的实例化和注解的收集" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/01/08/2023-1-8-bean%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%94%B6%E9%9B%86/" class="article-date">
@@ -648,6 +711,10 @@
       <ul>
         
           <li>
+            <a href="/2023/01/09/2023-1-9-@Autowired%E5%92%8C@PostConstruct@PreDestory%E6%B3%A8%E8%A7%A3/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2023/01/08/2023-1-8-bean%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%92%8C%E6%B3%A8%E8%A7%A3%E7%9A%84%E6%94%B6%E9%9B%86/">2023-1-8-bean的实例化和注解的收集</a>
           </li>
         
@@ -661,10 +728,6 @@
         
           <li>
             <a href="/2023/01/07/2023-1-7-%20BeanDefinitionRegistryPostProcessor%20%20%20BeanFactoryPostProcessor%E8%B0%83%E7%94%A8/">2023-1-7-BeanDefinitionRegistryPostProcessor+BeanFactoryPostProcessor调用</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/06/2023-1-6-component-scan%E6%A0%87%E7%AD%BE%E8%A7%A3%E6%9E%90/">2023-1-6-component-scan标签解析</a>
           </li>
         
       </ul>
