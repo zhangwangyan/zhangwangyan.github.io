@@ -64,6 +64,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2023-1-3-Spring源码编译" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/01/03/2023-1-3-Spring%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/" class="article-date">
+  <time datetime="2023-01-03T13:10:33.806Z" itemprop="datePublished">2023-01-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/spring/">spring</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/03/2023-1-3-Spring%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/">2023-1-3-Spring源码编译</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="源码工程准备"><a href="#源码工程准备" class="headerlink" title="源码工程准备"></a>源码工程准备</h4><p><a target="_blank" rel="noopener" href="https://spring.io/">https://spring.io/</a></p>
+<p><img src="2023-1-3-Spring%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.assets/image-20230103202930250.png" alt="image-20230103202930250"></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/spring-projects/spring-framework/tree/v5.2.18.RELEASE">https://github.com/spring-projects/spring-framework/tree/v5.2.18.RELEASE</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/deperado_admin/spring-framework.git">https://gitee.com/deperado_admin/spring-framework.git</a></p>
+<p>####1、Kotlin插件安装</p>
+<p><img src="2023-1-3-Spring%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.assets/image-20230103205035136.png" alt="image-20230103205035136"></p>
+<h4 id="2、gradle安装-配置环境变量"><a href="#2、gradle安装-配置环境变量" class="headerlink" title="2、gradle安装  配置环境变量"></a>2、gradle安装  配置环境变量</h4><p><img src="2023-1-3-Spring%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.assets/image-20230103205302472.png" alt="image-20230103205302472"></p>
+<h4 id="3、源码配置文件修改"><a href="#3、源码配置文件修改" class="headerlink" title="3、源码配置文件修改"></a>3、源码配置文件修改</h4><p><img src="2023-1-3-Spring%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.assets/image-20230103205529103.png" alt="image-20230103205529103"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maven &#123; url &#x27;https://maven.aliyun.com/repository/public&#x27; &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="2023-1-3-Spring%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.assets/image-20230103205634795.png" alt="image-20230103205634795"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">version=5.2.8.RELEASE</span><br><span class="line">org.gradle.jvmargs=-Xmx2048M</span><br><span class="line">org.gradle.caching=true</span><br><span class="line">org.gradle.parallel=true</span><br><span class="line">org.gradle.configureondemand=true</span><br><span class="line">org.gradle.daemon=true</span><br></pre></td></tr></table></figure>
+
+<p><img src="2023-1-3-Spring%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.assets/image-20230103205821349.png" alt="image-20230103205821349"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">maven &#123; url &#x27;https://maven.aliyun.com/nexus/content/groups/public/&#x27; &#125;</span><br><span class="line">maven &#123; url &#x27;https://maven.aliyun.com/nexus/content/repositories/jcenter&#x27;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、gradlew-spring-oxm-compileTestJava"><a href="#4、gradlew-spring-oxm-compileTestJava" class="headerlink" title="4、gradlew :spring-oxm:compileTestJava"></a>4、gradlew :spring-oxm:compileTestJava</h4><p><img src="2023-1-3-Spring%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.assets/image-20230103210109783.png" alt="image-20230103210109783"></p>
+<h4 id="5、打开源码"><a href="#5、打开源码" class="headerlink" title="5、打开源码"></a>5、打开源码</h4><p><img src="2023-1-3-Spring%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.assets/image-20230103210247746.png" alt="image-20230103210247746"></p>
+<p><img src="2023-1-3-Spring%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91.assets/image-20230103210335468.png" alt="image-20230103210335468"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhangwangyan.github.io/2023/01/03/2023-1-3-Spring%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91/" data-id="clcrinpsa0002rwu6difm7qqd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/01/03/hello-world/" class="article-date">
@@ -103,7 +162,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zhangwangyan.github.io/2023/01/03/hello-world/" data-id="clcrinluy000ed4u698ojbfcy" class="article-share-link">Share</a>
+      <a data-url="https://zhangwangyan.github.io/2023/01/03/hello-world/" data-id="clcrinpsn000drwu6hm7nenxu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -156,6 +215,10 @@
       <ul>
         
           <li>
+            <a href="/2023/01/11/2023-1-11-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E5%92%8CEnvironment%E5%AF%B9%E8%B1%A1/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2023/01/11/2023-1-10-spring%E4%B8%AD%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E8%AF%A6%E8%A7%A3/">(no title)</a>
           </li>
         
@@ -169,10 +232,6 @@
         
           <li>
             <a href="/2023/01/07/2023-1-7-BeanPostProcessor%E5%92%8CBean%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%88%9D%E6%8E%A2/">2023-1-7-BeanPostProcessor和Bean实例化初探</a>
-          </li>
-        
-          <li>
-            <a href="/2023/01/07/2023-1-7-%E4%BA%8B%E4%BB%B6%E7%AE%A1%E7%90%86%E7%B1%BB+%E6%B3%A8%E5%86%8C%E4%BA%8B%E4%BB%B6%E7%B1%BB/">2023-1-7-事件管理类+注册事件类</a>
           </li>
         
       </ul>
